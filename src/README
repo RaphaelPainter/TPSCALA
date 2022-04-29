@@ -1,0 +1,16 @@
+Est-il nécessaire de définir une variable d'instance et une méthode d'affichage ?
+-> non on peut se contenter de définir des variables immutables dans chaque objet
+
+Est-il possible de placer la conversion implicite de telle manière qu'il ne soit pas nécessaire de l'importer ?
+-> Oui en plaçant la conversion dans l'objet Account (compagnon)
+
+Factor (sans conversion) ok modulo - À quoi sert la déclaration "implicit" de la méthode * ?
+-> le mot-clef implicit permet de déléguer certaines actions au compilateur scala. Ici on souhaite plutôt que la
+méthode double2Factor soit implicite afin que le compilateur l'utilise automatiquement quand on veut multiplier
+des accounts avec des factors ou l'inverse.
+
+Si on teste à l'extérieur du paquet "currency" en n'important explicitement que les devises et Account,
+on voit que le compilateur trouve la conversion Double => Account, mais pas Double => Factor, qu'il est
+nécessaire d'importer. + La question reste ouverte : y a-t-il un autre placement qui permette d'éviter
+cette importation ?
+-> cf currency2
